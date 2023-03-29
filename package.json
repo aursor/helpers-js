@@ -1,0 +1,29 @@
+{
+  "name": "helpers-script",
+  "version": "1.0.0",
+  "description": "Js/Ts实用工具集合",
+  "main": "./lib/helpers-script.umd.js",
+  "module": "./lib/helpers-script.mjs",
+  "scripts": {
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aursor/helpers-script.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aursor/helpers-script/issues"
+  },
+  "homepage": "https://github.com/aursor/helpers-script#readme",
+  "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/preset-typescript": "^7.21.0",
+    "terser": "^5.16.8",
+    "typescript": "^5.0.2",
+    "vite": "^4.2.1",
+    "vite-plugin-babel": "^1.1.3"
+  }
+}
