@@ -4,6 +4,12 @@ export function isChinesePhone(value: string, reg?: RegExp): boolean {
   return instance.test(value);
 }
 
+/**@description 校验Email地址 */
+export function isEmail(value: string, reg?: RegExp) {
+  const instance = reg ? reg : /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+  return instance.test(value);
+}
+
 /**@description 校验不等于null或者不等于undefined */
 export function isValidValue(value: any): boolean {
   return value === null || value === undefined;
@@ -19,6 +25,7 @@ export function isHasNoneChild(collections: object): boolean {
 
 export default {
   isChinesePhone,
+  isEmail,
   isValidValue,
   isHasNoneChild,
 };
