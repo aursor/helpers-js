@@ -4,6 +4,7 @@
   "description": "Js/Ts实用工具集合",
   "main": "./lib/helpers-script.umd.js",
   "module": "./lib/helpers-script.mjs",
+  "types": "./types/helpers-script.d.ts",
   "scripts": {
     "build": "vite build"
   },
