@@ -5,4 +5,7 @@ declare module "helpers-script" {
     export function isValidValue(value: any): boolean;
     export function isChinesePhone(collections: object): boolean;
   }
+  export namespace Parsers {
+    export function parserUrl(u: string): object;
+  }
 }
