@@ -9,16 +9,16 @@ export function slice<T>(
   startIndex = 0,
   endIndex?: number
 ): Array<T> | never {
-  if (arr.length < 1) return [];
+  if (arr.length < 1) return []
   if (!endIndex || endIndex > arr.length) {
-    endIndex = arr.length;
+    endIndex = arr.length
   }
-  if (startIndex > endIndex) throw new Error("起始点不能大于终止点");
-  const slicedArr: Array<T> = [];
+  if (startIndex > endIndex) throw new Error("起始点不能大于终止点")
+  const slicedArr: Array<T> = []
   for (let i = 0; i < endIndex; i++) {
-    slicedArr.push(arr[i]);
+    slicedArr.push(arr[i])
   }
-  return slicedArr;
+  return slicedArr
 }
 
 /**@desc 数组查询 [{},{}] 这种 */
@@ -31,16 +31,16 @@ export function findBy<T>(
   value: any,
   multip = false
 ): Array<T> | T | undefined {
-  const matched: Array<T> = [];
+  const matched: Array<T> = []
   for (const iter of arr) {
     if (iter[key] === value) {
-      matched.push(iter);
+      matched.push(iter)
     }
   }
-  return multip ? matched : matched[0];
+  return multip ? matched : matched[0]
 }
 
 export default {
   slice,
   findBy,
-};
+}
