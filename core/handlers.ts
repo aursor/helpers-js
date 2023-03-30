@@ -40,7 +40,19 @@ export function findBy<T>(
   return multip ? matched : matched[0]
 }
 
+/**@desc 生成随机颜色 */
+export function randomColor(): string {
+  let color = "#"
+  let values = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"]
+  for (let i = 0; i < 6; i++) {
+    const index = parseInt((Math.random() * 16).toString())
+    color += values[index]
+  }
+  return color
+}
+
 export default {
   slice,
   findBy,
+  randomColor,
 }

@@ -20,5 +20,7 @@ declare module "helpers-script" {
       value: any,
       multip?: boolean
     ): Array<T> | T | undefined
+
+    export function randomColor(): string
   }
 }
