@@ -1,6 +1,9 @@
 import { defineConfig } from "vite";
 import path from "path";
 import babel from "vite-plugin-babel";
+import dts from "vite-plugin-dts";
+// import fs from "fs";
+
 export default defineConfig({
   build: {
     outDir: "./lib",
@@ -9,7 +12,13 @@ export default defineConfig({
       name: "HelpersScript",
       formats: ["es", "cjs", "umd"],
     },
-    minify: "terser",
+    minify: "esbuild",
+    // minify: "terser",
   },
-  plugins: [babel()],
+  plugins: [
+    babel(),
+    dts({
+      outputDir: "./types",
+    }),
+  ],
 });
