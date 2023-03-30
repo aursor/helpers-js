@@ -21,6 +21,26 @@ export function slice<T>(
   return slicedArr;
 }
 
+/**@desc 数组查询 [{},{}] 这种 */
+/**
+ * @param multip 是否匹配多个,默认 false
+ */
+export function findBy<T>(
+  arr: Array<T>,
+  key: keyof T,
+  value: any,
+  multip = false
+): Array<T> | T | undefined {
+  const matched: Array<T> = [];
+  for (const iter of arr) {
+    if (iter[key] === value) {
+      matched.push(iter);
+    }
+  }
+  return multip ? matched : matched[0];
+}
+
 export default {
   slice,
+  findBy,
 };
