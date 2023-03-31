@@ -9,16 +9,16 @@ export function slice<T>(
   startIndex = 0,
   endIndex?: number
 ): Array<T> | never {
-  if (arr.length < 1) return []
+  if (arr.length < 1) return [];
   if (!endIndex || endIndex > arr.length) {
-    endIndex = arr.length
+    endIndex = arr.length;
   }
-  if (startIndex > endIndex) throw new Error("起始点不能大于终止点")
-  const slicedArr: Array<T> = []
+  if (startIndex > endIndex) throw new Error("起始点不能大于终止点");
+  const slicedArr: Array<T> = [];
   for (let i = 0; i < endIndex; i++) {
-    slicedArr.push(arr[i])
+    slicedArr.push(arr[i]);
   }
-  return slicedArr
+  return slicedArr;
 }
 
 /**@desc 数组查询 [{},{}] 这种 */
@@ -31,28 +31,54 @@ export function findBy<T>(
   value: any,
   multip = false
 ): Array<T> | T | undefined {
-  const matched: Array<T> = []
+  const matched: Array<T> = [];
   for (const iter of arr) {
     if (iter[key] === value) {
-      matched.push(iter)
+      matched.push(iter);
     }
   }
-  return multip ? matched : matched[0]
+  return multip ? matched : matched[0];
 }
 
 /**@desc 生成随机颜色 */
 export function randomColor(): string {
-  let color = "#"
-  let values = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"]
+  let color = "#";
+  let values = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
   for (let i = 0; i < 6; i++) {
-    const index = parseInt((Math.random() * 16).toString())
-    color += values[index]
+    const index = parseInt((Math.random() * 16).toString());
+    color += values[index];
   }
-  return color
+  return color;
+}
+
+/**@desc 字符串替换,index不能小于0，并且不能大于等于value的长度,截取之后 */
+/**
+ * 比如: stringReplace("你好世界",0,"我") ---> "我好世界啊"
+ */
+export function stringReplace(
+  value: string,
+  index: number,
+  inserted: string
+): string {
+  if (!value) return "";
+  if (index < 0 && index >= value.length) {
+    console.warn("index不能小于0,并且不能大于等于" + value + "的长度");
+    return "";
+  }
+  let str = "";
+  for (let i = 0; i <= value.length; i++) {
+    if (i === index) {
+      str += inserted;
+      continue;
+    }
+    str += value.charAt(i);
+  }
+  return str;
 }
 
 export default {
   slice,
   findBy,
   randomColor,
-}
+  stringReplace,
+};
