@@ -27,7 +27,7 @@ declare module "helpers-script" {
       inserted: string
     ): string;
 
-    export function sliceBlob(
+    export function sliceFile(
       file: File,
       minSize: number
     ): Promise<Array<Blob>>;
