@@ -27,6 +27,11 @@ declare module "helpers-script" {
       inserted: string
     ): string;
 
+    export function sliceBlob(
+      file: File,
+      minSize: number
+    ): Promise<Array<Blob>>;
+
     export function randomColor(): string;
   }
 }

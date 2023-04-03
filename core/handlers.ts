@@ -76,9 +76,43 @@ export function stringReplace(
   return str;
 }
 
+/**
+ * @desc 文件分片
+ * @param {File} file 文件
+ * @param {number} minSize 分片的尺寸
+ */
+
+export function sliceFile(file: File, minSize: number): Promise<Array<Blob>> {
+  const byteSize = minSize * 1024 * 1024;
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsArrayBuffer(file);
+    fileReader.onload = ({ target }) => {
+      if (target) {
+        const blob = new Blob([target.result as ArrayBuffer]);
+        if (blob.size <= byteSize) {
+          return resolve([blob]);
+        }
+        const times = Math.ceil(blob.size / byteSize);
+        const blocks = [];
+        for (let i = 0; i < times; i++) {
+          const sliceBlob = blob.slice(i * byteSize, (i + 1) * byteSize);
+          blocks.push(sliceBlob);
+        }
+        resolve(blocks);
+      } else {
+        reject(
+          "fileReader.onload function's argument event.target is a invalid value"
+        );
+      }
+    };
+  });
+}
+
 export default {
   slice,
   findBy,
   randomColor,
   stringReplace,
+  sliceFile,
 };
